@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@theme {
+  --font-winky: "Winky Rough";
+}
+@layer components {
+  .animation2 {
+    animation: animate2 infinite 2s linear;
+  }
+  @keyframes animate2 {
+    0% {
+      background-color: blue;
+    }
+    100% {
+      background-color: red;
+    }
+  }
+}
