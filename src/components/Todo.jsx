@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
 import DisplayTodo from "./DisplayTodo";
+import Header from "./Header";
 export default function Todo() {
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState({ todo: "", compeleted: false });
   const [todos, setTodos] = useState([]);
   function controlSubmit(e) {
     e.preventDefault();
     setTodos([...todos, todo]);
-    setTodo("");
+    setTodo({ todo: "", compeleted: false });
   }
   return (
     <div className="w-full">
-      <div className="w-full p-4 text-center bg-amber-400 text-4xl text-white mb-4">
-        <h1>TODO APP</h1>
-      </div>
+      <Header />
       <div className="w-[60%] mx-auto">
         <form className="" onSubmit={controlSubmit}>
           <input
-            value={todo}
-            onChange={(e) => setTodo(e.target.value)}
+            value={todo.todo}
+            onChange={(e) =>
+              setTodo({ todo: e.target.value, compeleted: false })
+            }
             type="text"
             placeholder="What is in your mind?"
             className="py-4 focus:outline-0  placeholder:text-gray-500 border-b w-[80%]"
@@ -29,7 +30,12 @@ export default function Todo() {
       </div>
       <div>
         {todos.map((item) => (
-          <DisplayTodo todo={item} />
+          <DisplayTodo
+            todo={item.todo}
+            check={item.compeleted}
+            todos={todos}
+            setTodos={setTodos}
+          />
         ))}
       </div>
       <div className="bg-amber-400 absolute bottom-0 py-4 px-6 text-white flex justify-between w-full">
