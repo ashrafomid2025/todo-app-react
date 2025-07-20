@@ -9,6 +9,9 @@ export default function Todo() {
     setTodos([...todos, todo]);
     setTodo({ todo: "", compeleted: false });
   }
+  const filterA = todos.filter((item) => {
+    return item.compeleted === true;
+  });
   return (
     <div className="w-full">
       <Header />
@@ -38,12 +41,12 @@ export default function Todo() {
           />
         ))}
       </div>
-      <div className="bg-amber-400 absolute bottom-0 py-4 px-6 text-white flex justify-between w-full">
+      <div className="bg-purple-500 absolute bottom-0 py-4 px-6 text-white flex justify-between w-full">
         <div className="text-center text-3xl font-bold">
           <h1>All Tasks : {todos.length}</h1>
         </div>
-        <div className="text-center font-bold text-3xl">
-          <h1>Completed Tasks:0</h1>
+        <div className="text-center font-bold text-3xl mx-4">
+          <h1>Completed Tasks:{filterA.length}</h1>
         </div>
       </div>
     </div>
