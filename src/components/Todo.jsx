@@ -9,8 +9,11 @@ export default function Todo() {
     setTodos([...todos, todo]);
     setTodo({ todo: "", compeleted: false });
   }
-  const filterA = todos.filter((item) => {
+  const completedOnes = todos.filter((item) => {
     return item.compeleted === true;
+  });
+  const sortedTodos = todos.slice().sort((a, b) => {
+    return Number(a.compeleted) - Number(b.compeleted);
   });
   return (
     <div className="w-full">
@@ -32,7 +35,7 @@ export default function Todo() {
         </form>
       </div>
       <div>
-        {todos.map((item) => (
+        {sortedTodos.map((item) => (
           <DisplayTodo
             todo={item.todo}
             check={item.compeleted}
@@ -46,7 +49,7 @@ export default function Todo() {
           <h1>All Tasks : {todos.length}</h1>
         </div>
         <div className="text-center font-bold text-3xl mx-4">
-          <h1>Completed Tasks:{filterA.length}</h1>
+          <h1>Completed Tasks:{completedOnes.length} </h1>
         </div>
       </div>
     </div>

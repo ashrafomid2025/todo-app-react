@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export default function DisplayTodo({ todo, check, todos, setTodos }) {
   function handleChange(name) {
-    console.log(name);
     const newTodos = todos.map((item) => {
       return item.todo === name
         ? { ...item, compeleted: !item.compeleted }
@@ -11,11 +10,12 @@ export default function DisplayTodo({ todo, check, todos, setTodos }) {
     setTodos(newTodos);
     console.log(newTodos);
   }
-  function handleDelete(todoName) {
-    const newT = todos.filter((item) => {
-      return item.todo !== todoName;
+
+  function handleDelete(todo) {
+    const newArray = todos.filter((item) => {
+      return item.todo !== todo;
     });
-    setTodos(newT);
+    setTodos(newArray);
   }
   const changeStyle = check ? "done" : "";
   return (
@@ -23,12 +23,11 @@ export default function DisplayTodo({ todo, check, todos, setTodos }) {
       <div className="w-[80%] text-2xl flex my-2  ">
         <input
           type="checkbox"
+          onClick={() => handleChange(todo)}
           checked={check}
           className="form-checkbox accent-purple-500 h-4 mx-3.5 my-1.5  w-4 text-green-400"
         />
-        <h1 className={changeStyle} onClick={() => handleChange(todo)}>
-          {todo}
-        </h1>
+        <h1 className={changeStyle}>{todo}</h1>
       </div>
       <span
         className="material-icons p-4 cursor-pointer"
