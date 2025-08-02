@@ -45,10 +45,10 @@ export default function Todo() {
         ))}
       </div>
       <div className="bg-purple-500 absolute bottom-0 py-4 px-6 text-white flex justify-between w-full">
-        <div className="text-center text-3xl font-bold">
+        <div className="text-center text-4xl font-bold">
           <h1>All Tasks : {todos.length}</h1>
         </div>
-        <div className="text-center font-bold text-3xl mx-4">
+        <div className="text-center font-bold text-4xl mx-4">
           <h1>Completed Tasks:{completedOnes.length} </h1>
         </div>
       </div>
